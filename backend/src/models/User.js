@@ -6,6 +6,7 @@ class User extends Model {
             name: DataTypes.STRING,
             email: DataTypes.STRING,
             age: DataTypes.INTEGER,
+            whatsapp: DataTypes.STRING,
         }, {
             sequelize
         })

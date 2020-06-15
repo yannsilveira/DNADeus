@@ -21,6 +21,10 @@ module.exports = {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
+      whatsapp: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
       created_at: {
         allowNull: false,
         type: DataTypes.DATE,

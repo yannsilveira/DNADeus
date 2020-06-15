@@ -14,7 +14,7 @@ module.exports = {
 
     async store(req, res) {
         const { id } = req.params
-        const { name, email, age } = req.body
+        const { name, email, age, whatsapp } = req.body
 
         const ministry = await Ministry.findByPk(id)
 
@@ -22,7 +22,7 @@ module.exports = {
             return res.status(400).json({ error: 'Ministry not found!' })
         }
 
-        const [user] = await User.findOrCreate({ where: { name, email, age } })
+        const [user] = await User.findOrCreate({ where: { name, email, age, whatsapp } })
 
         await ministry.addUser(user)
 
@@ -47,7 +47,7 @@ module.exports = {
 
     async update(req, res) {
         const { id } = req.params
-        const { name, email, age } = req.body
+        const { name, email, age, whatsapp } = req.body
 
         const ministry = await Ministry.findByPk(id)
 
