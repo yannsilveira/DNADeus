@@ -1,26 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-
+import { StatusBar } from 'react-native';
+import Routes from './src/routes';
+import { IndieFlower_400Regular, useFonts } from '@expo-google-fonts/dev'
+import { AppLoading } from 'expo';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <ImageBackground source={require('./src/assets/logodna.png')} style={{ width: 300, height: 300}}/>
-      <Text style={styles.hometext}>Ola... Bem Vindo!</Text>
-    </View>
-  );
+  let [fontsLoaded] = useFonts({
+    IndieFlower_400Regular
+  })
+
+  if (!fontsLoaded) {
+    return <AppLoading />
+  } else {
+    return (
+      <>
+        <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
+        <Routes />
+      </>
+    );
+
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  hometext: {
-    fontSize: 30,
-    color: '#fff'
-  },
-});
