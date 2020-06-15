@@ -10,6 +10,7 @@ export default function Home() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('')
+    const [whatsapp, setWhatsapp] = useState('');
 
     const ministry_id = localStorage.getItem('id');
 
@@ -20,7 +21,8 @@ export default function Home() {
         const data = {
             name,
             email,
-            age
+            age,
+            whatsapp
         };
 
         try {
@@ -43,6 +45,7 @@ export default function Home() {
                     <input className="form-input" placeholder="Nome" type="text" value={name} onChange={e => setName(e.target.value)}></input>
                     <input className="form-input" placeholder="Idade" type="number" value={age} onChange={e => setAge(e.target.value)}></input>
                     <input className="form-input" placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)}></input>
+                    <input className="form-input" placeholder="WhatsApp" type="number" value={whatsapp} onChange={e => setWhatsapp(e.target.value)}></input>
                     <button className="btn btn-danger" type="submit">Cadastrar</button>
                     <Link className="link" to="/home">
                         <FiArrowLeft size={16} color="#e02041"></FiArrowLeft>

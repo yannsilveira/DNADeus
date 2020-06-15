@@ -87,6 +87,7 @@ export default function Home() {
                                 <th scope="col">NOME</th>
                                 <th scope="col">IDADE</th>
                                 <th scope="col">E-MAIL</th>
+                                <th scope="col">WhatsApp</th>
                                 <th scope="col">Deletar</th>
                             </tr>
                         </thead>
@@ -96,6 +97,7 @@ export default function Home() {
                                     <td key={user.id}>{user.name}</td>
                                     <td>{user.age}</td>
                                     <td>{user.email}</td>
+                                    <td>{user.whatsapp}</td>
                                     <button type="button" onClick={() => handleDeleteUser(user.id)}>
                                         <FiTrash2 size={20} color="#000" />
                                     </button>
