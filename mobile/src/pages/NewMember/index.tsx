@@ -32,10 +32,8 @@ const NewMember = () => {
 
 
     return (
-        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? 'padding' : undefined}>
-            <View>
-                <Image source={require('../../assets/logodna.png')} style={{ width: 300, height: 300 }} />
-            </View>
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? 'position' : undefined}>
+            <Image source={require('../../assets/logodna.png')} style={{ width: 300, height: 300 }} />
             <Text style={styles.textHome}>Faça seu Cadastro</Text>
             <View style={styles.footer}>
                 <TextInput style={styles.inputs} value={name} onChangeText={setName} placeholder="Informe seu Nome..." />
@@ -64,6 +62,7 @@ const styles = StyleSheet.create({
     textHome: {
         fontSize: 30,
         color: '#000',
+        textAlign: 'center',
         fontFamily: 'IndieFlower_400Regular',
     },
 

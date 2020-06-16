@@ -21,13 +21,9 @@ const Logon = () => {
     }
 
     return (
-        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? 'padding' : undefined}>
-            <View>
-                <Image source={require('../../assets/logodna.png')} style={{ width: 300, height: 300 }} />
-            </View>
-            <View>
-                <Text style={styles.textHome}>Faça seu Login</Text>
-            </View>
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? 'position' : undefined}>
+            <Image source={require('../../assets/logodna.png')} style={{ width: 300, height: 300 }} />
+            <Text style={styles.textHome}>Faça seu Login</Text>
             <TextInput style={styles.inputs} onChangeText={setId} value={id} keyboardType="name-phone-pad" placeholder="Informe seu ID..." />
             <View style={styles.footer}>
                 <RectButton style={styles.button} onPress={handleNavigationToHome}>
@@ -38,11 +34,9 @@ const Logon = () => {
                         Entrar
                     </Text>
                 </RectButton>
-                <View>
-                    <Link to="/Register" style={styles.link}>
-                        <Text>Não possuo cadastro</Text>
-                    </Link>
-                </View>
+                <Link to="/Register" style={styles.link}>
+                    <Text>Não possuo cadastro</Text>
+                </Link>
             </View>
         </KeyboardAvoidingView>
     );
@@ -58,11 +52,12 @@ const styles = StyleSheet.create({
     textHome: {
         fontSize: 30,
         color: '#000',
+        textAlign: 'center',
         fontFamily: 'IndieFlower_400Regular',
     },
 
     inputs: {
-        marginTop: 20,
+        marginTop: 60,
         fontSize: 20,
         borderBottomColor: '#000',
         borderBottomWidth: 1,

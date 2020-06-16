@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { KeyboardAvoidingView, Text, Platform, Image, StyleSheet, TextInput, ScrollView, AsyncStorage } from 'react-native';
+import React, { useState, Component } from 'react';
+import { KeyboardAvoidingView, Text, Platform, Image, StyleSheet, TextInput, ScrollView, AsyncStorage, DatePickerIOS } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton, State } from 'react-native-gesture-handler';
 import { Link } from '@react-navigation/native';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/native';
-import DataPicker from 'react-native-datepicker';
-import DatePicker from 'react-native-datepicker';
+import DatePicker from '@react-native-community/datetimepicker';
 
 const NewEvent = () => {
     const navigation = useNavigation();
@@ -16,8 +15,8 @@ const NewEvent = () => {
     const [rua, setRua] = useState('');
     const [numero, setNumero] = useState('');
     const [bairro, setBairro] = useState('');
-    const [date, setDate] = useState('');
-    const [horario, setHorario] = useState('');
+    const [date, setDate] = useState(new Date());
+    const [horario, setHorario] = useState(new Date());
 
     const data = {
         name,
@@ -41,6 +40,7 @@ const NewEvent = () => {
     }
 
 
+
     return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? 'padding' : undefined}>
             <ScrollView>
@@ -52,8 +52,10 @@ const NewEvent = () => {
                 <TextInput value={rua} onChangeText={setRua} style={styles.inputs} placeholder="RUA..." />
                 <TextInput value={numero} onChangeText={setNumero} style={styles.inputs} placeholder="Número..." />
                 <TextInput value={bairro} onChangeText={setBairro} style={styles.inputs} placeholder="Bairro..." />
-                <DatePicker style={styles.datainputs} mode="date" placeholder="Data..." format="DD-MM-YYYY" customStyles={{ dateInput: { borderWidth: 0 }, dateIcon: { position: 'absolute', left: 4 } }} onDateChange={setDate} confirmBtnText="Confirmar" cancelBtnText="Cancelar" date={date} />
-                <DatePicker style={styles.datainputs} mode="time" placeholder="Horário..." customStyles={{ dateInput: { borderWidth: 0 }, dateIcon: { position: 'absolute', left: 4 } }} onDateChange={setHorario} confirmBtnText="Confirmar" cancelBtnText="Cancelar" date={horario} />
+                <Text style={styles.textdatainputs}>Data do Evento</Text>
+                <DatePicker style={styles.datainputs} mode="date" value={date} onChange={setDate} />
+                <Text style={styles.textdatainputs}>Horário do Evento</Text>
+                <DatePicker style={styles.datainputs} mode="time" value={horario} onChange={setHorario} />
                 <RectButton style={styles.button} onPress={handleRegisterNewEvent}>
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </RectButton>
@@ -95,9 +97,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: 300,
         height: 30,
-        paddingBottom: 40,
-        borderBottomWidth: 1,
-        borderBottomColor: '#000',
+        paddingBottom: 200,
+    },
+
+    textdatainputs: {
+        fontSize: 20,
+        fontWeight: '600',
+        textTransform: 'uppercase',
+        marginTop: 30
     },
 
     button: {
