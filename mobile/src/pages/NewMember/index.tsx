@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#000',
         borderBottomWidth: 1,
         paddingLeft: 10,
-        width: 200,
+        width: 300,
         height: 30,
         paddingBottom: 10
     },
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: 'red',
         height: 60,
-        width: 200,
+        width: 300,
         flexDirection: 'row',
         borderRadius: 10,
         overflow: 'hidden',

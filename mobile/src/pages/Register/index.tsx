@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
     },
 
     inputs: {
-        marginTop: 30,
+        marginTop: 20,
         fontSize: 20,
         borderBottomColor: '#000',
         borderBottomWidth: 1,
         paddingLeft: 10,
-        width: 200,
+        width: 300,
         height: 30,
         paddingBottom: 10
     },
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: 'red',
         height: 60,
-        width: 200,
+        width: 300,
         flexDirection: 'row',
         borderRadius: 10,
         overflow: 'hidden',

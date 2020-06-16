@@ -5,6 +5,8 @@ import { RectButton } from 'react-native-gesture-handler';
 import { Link } from '@react-navigation/native';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/native';
+import DataPicker from 'react-native-datepicker';
+import DatePicker from 'react-native-datepicker';
 
 const NewEvent = () => {
     const navigation = useNavigation();
@@ -50,8 +52,8 @@ const NewEvent = () => {
                 <TextInput value={rua} onChangeText={setRua} style={styles.inputs} placeholder="RUA..." />
                 <TextInput value={numero} onChangeText={setNumero} style={styles.inputs} placeholder="Número..." />
                 <TextInput value={bairro} onChangeText={setBairro} style={styles.inputs} placeholder="Bairro..." />
-                <TextInput value={date} onChangeText={setDate} style={styles.inputs} placeholder="Data..." />
-                <TextInput value={horario} onChangeText={setHorario} style={styles.inputs} placeholder="Horário..." />
+                <DatePicker style={styles.datainputs} mode="date" placeholder="Data..." format="DD-MM-YYYY" customStyles={{ dateInput: { borderWidth: 0 }, dateIcon: { position: 'absolute', left: 4 } }} onDateChange={setDate} confirmBtnText="Confirmar" cancelBtnText="Cancelar" date={date} />
+                <DatePicker style={styles.datainputs} mode="time" placeholder="Horário..." customStyles={{ dateInput: { borderWidth: 0 }, dateIcon: { position: 'absolute', left: 4 } }} onDateChange={setHorario} confirmBtnText="Confirmar" cancelBtnText="Cancelar" date={horario} />
                 <RectButton style={styles.button} onPress={handleRegisterNewEvent}>
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </RectButton>
@@ -79,22 +81,29 @@ const styles = StyleSheet.create({
     },
 
     inputs: {
-        marginLeft: 50,
         marginTop: 20,
         fontSize: 20,
         borderBottomColor: '#000',
         borderBottomWidth: 1,
         paddingLeft: 10,
-        width: 200,
+        width: 300,
         height: 30,
         paddingBottom: 10
     },
 
+    datainputs: {
+        marginTop: 20,
+        width: 300,
+        height: 30,
+        paddingBottom: 40,
+        borderBottomWidth: 1,
+        borderBottomColor: '#000',
+    },
+
     button: {
-        marginLeft: 50,
         backgroundColor: 'red',
         height: 60,
-        width: 200,
+        width: 300,
         flexDirection: 'row',
         borderRadius: 10,
         overflow: 'hidden',
