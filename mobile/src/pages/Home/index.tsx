@@ -1,11 +1,15 @@
-import React from 'react';
-import { KeyboardAvoidingView, Text, Platform, Image, StyleSheet, View, AsyncStorage } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { KeyboardAvoidingView, Text, Platform, Image, StyleSheet, View, ScrollView, AsyncStorage, FlatList, TouchableOpacity } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import api from '../../services/api';
 
 const Home = () => {
     const navigation = useNavigation();
+    const [members, setMembers] = useState([]);
+    const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(false);
 
 
     async function handleregisterNewMember() {
@@ -16,22 +20,46 @@ const Home = () => {
         navigation.navigate('NewEvent');
     }
 
+    async function handleLogout() {
+        await AsyncStorage.clear();
+        navigation.goBack();
+    }
+
+    function navigateToDetail(member: Object) {
+        navigation.navigate('Detail', { member })
+    }
+
     return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? 'padding' : undefined}>
-            <Image source={require('../../assets/logodna.png')} style={{ width: 300, height: 300 }} />
-            <Text style={styles.textHome}>Home</Text>            
-            <RectButton style={styles.button} onPress={handleregisterNewMember}>
-                <View style={styles.buttonIcon}>
-                    <AntDesign name="adduser" color="#000" size={30} />
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <Image source={require('../../assets/logodna.png')} style={{ width: 300, height: 300 }} />
+                <View style={{ alignItems: 'center', marginBottom: 40 }}>
+                    <RectButton onPress={handleLogout}>
+                        <AntDesign name="poweroff" color="#000" size={40} />
+                    </RectButton>
                 </View>
-                <Text style={styles.buttonText}>Novo Membro</Text>
-            </RectButton>
-            <RectButton style={styles.button} onPress={handleregisterNewEvent}>
-                <View style={styles.buttonIcon}>
-                    <AntDesign name="bells" color="#000" size={30} />
+                <Text style={styles.textHome}>Home</Text>
+                
+                <View style={styles.sections}>
+                    <Text style={styles.sectiontext}>Membros</Text>
+                    <RectButton style={styles.button} onPress={handleregisterNewMember}>
+                        <View style={styles.buttonIcon}>
+                            <AntDesign name="adduser" color="#fff" size={30} />
+                        </View>
+                        <Text style={styles.buttonText}>Novo Membro</Text>
+                    </RectButton>
                 </View>
-                <Text style={styles.buttonText}>Novo Evento</Text>
-            </RectButton>
+                
+                <View style={styles.sections}>
+                    <Text style={styles.sectiontext}>Eventos</Text>
+                    <RectButton style={styles.button} onPress={handleregisterNewEvent}>
+                        <View style={styles.buttonIcon}>
+                            <AntDesign name="bells" color="#fff" size={30} />
+                        </View>
+                        <Text style={styles.buttonText}>Novo Evento</Text>
+                    </RectButton>
+                </View>
+            </ScrollView>
         </KeyboardAvoidingView>
     );
 }
@@ -44,15 +72,16 @@ const styles = StyleSheet.create({
     },
 
     textHome: {
-        fontSize: 30,
+        fontSize: 40,
         color: '#000',
         fontFamily: 'IndieFlower_400Regular',
+        textAlign: 'center',
     },
 
     button: {
-        backgroundColor: 'red',
+        backgroundColor: '#000',
         height: 60,
-        width: 200,
+        width: 150,
         flexDirection: 'row',
         borderRadius: 10,
         overflow: 'hidden',
@@ -83,6 +112,57 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontSize: 20,
         textDecorationLine: 'underline',
+    },
+
+    sections: {
+        flex: 1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignContent: 'center',
+        marginTop: 40
+    },
+
+    sectiontext: {
+        fontSize: 20,
+        fontWeight: '600',
+        textTransform: 'uppercase',
+        paddingTop: 45
+    },
+
+    incidentList: {
+        marginTop: 32,
+    },
+
+    incident: {
+        padding: 24,
+        borderRadius: 8,
+        backgroundColor: 'rgba(0, 0, 0, .1)',
+        marginBottom: 16,
+    },
+
+    incidentProperty: {
+        fontSize: 14,
+        color: '#41414d',
+        fontWeight: 'bold',
+    },
+
+    incidentValue: {
+        marginTop: 8,
+        fontSize: 15,
+        marginBottom: 24,
+        color: '#737380',
+    },
+
+    detailsButton: {
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+
+    detailsButtonText: {
+        color: '#e02041',
+        fontSize: 15,
+        fontWeight: 'bold',
     },
 });
 

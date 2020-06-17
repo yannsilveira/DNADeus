@@ -1,11 +1,10 @@
 import React, { useState, Component } from 'react';
-import { KeyboardAvoidingView, Text, Platform, Image, StyleSheet, TextInput, ScrollView, AsyncStorage, DatePickerIOS } from 'react-native';
+import { KeyboardAvoidingView, Text, Platform, Image, StyleSheet, TextInput, ScrollView, AsyncStorage } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { RectButton, State } from 'react-native-gesture-handler';
 import { Link } from '@react-navigation/native';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/native';
-import DatePicker from '@react-native-community/datetimepicker';
 
 const NewEvent = () => {
     const navigation = useNavigation();
@@ -15,8 +14,8 @@ const NewEvent = () => {
     const [rua, setRua] = useState('');
     const [numero, setNumero] = useState('');
     const [bairro, setBairro] = useState('');
-    const [date, setDate] = useState(new Date());
-    const [horario, setHorario] = useState(new Date());
+    const [date, setDate] = useState('');
+    const [horario, setHorario] = useState('');
 
     const data = {
         name,
@@ -52,10 +51,8 @@ const NewEvent = () => {
                 <TextInput value={rua} onChangeText={setRua} style={styles.inputs} placeholder="RUA..." />
                 <TextInput value={numero} onChangeText={setNumero} style={styles.inputs} placeholder="Número..." />
                 <TextInput value={bairro} onChangeText={setBairro} style={styles.inputs} placeholder="Bairro..." />
-                <Text style={styles.textdatainputs}>Data do Evento</Text>
-                <DatePicker style={styles.datainputs} mode="date" value={date} onChange={setDate} />
-                <Text style={styles.textdatainputs}>Horário do Evento</Text>
-                <DatePicker style={styles.datainputs} mode="time" value={horario} onChange={setHorario} />
+                <TextInput value={date} onChangeText={setDate} style={styles.inputs} maxLength={10} placeholder="Data..." />
+                <TextInput value={horario} onChangeText={setHorario} style={styles.inputs} maxLength={5} placeholder="Horario..." />
                 <RectButton style={styles.button} onPress={handleRegisterNewEvent}>
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </RectButton>

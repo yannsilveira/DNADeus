@@ -12,7 +12,7 @@ const Logon = () => {
     async function handleNavigationToHome() {
         try {
             const response = await api.post('sessions', { id });
-            await AsyncStorage.setItem('id', id);
+            await AsyncStorage.setItem('id', JSON.stringify(id));
             await AsyncStorage.setItem('name', response.data.name);
             navigation.navigate('Home');
         } catch (error) {
@@ -28,7 +28,7 @@ const Logon = () => {
             <View style={styles.footer}>
                 <RectButton style={styles.button} onPress={handleNavigationToHome}>
                     <View style={styles.buttonIcon}>
-                        <AntDesign name="login" style={{ color: '#000' }} size={20} />
+                        <AntDesign name="login" style={{ color: '#fff' }} size={20} />
                     </View>
                     <Text style={styles.buttonText}>
                         Entrar
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        backgroundColor: 'red',
+        backgroundColor: '#000',
         height: 60,
         width: 300,
         flexDirection: 'row',
