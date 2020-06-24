@@ -10,22 +10,22 @@ const NewEvent = () => {
     const navigation = useNavigation();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [cep, setCEP] = useState('');
-    const [rua, setRua] = useState('');
-    const [numero, setNumero] = useState('');
-    const [bairro, setBairro] = useState('');
+    const [zipcode, setZipcode] = useState('');
+    const [street, setStreet] = useState('');
+    const [number, setNumber] = useState('');
+    const [neighborhood, setNeighborhood] = useState('');
     const [date, setDate] = useState('');
-    const [horario, setHorario] = useState('');
+    const [schedule, setSchedule] = useState('');
 
     const data = {
         name,
         description,
-        cep,
-        rua,
-        numero,
-        bairro,
+        zipcode,
+        street,
+        number,
+        neighborhood,
         date,
-        horario,
+        schedule,
     };
 
     async function handleRegisterNewEvent() {
@@ -47,12 +47,12 @@ const NewEvent = () => {
                 <Text style={styles.textHome}>Crie seu Evento</Text>
                 <TextInput value={name} onChangeText={setName} style={styles.inputs} placeholder="Nome..." />
                 <TextInput value={description} onChangeText={setDescription} style={styles.inputs} placeholder="Descrição..." />
-                <TextInput value={cep} onChangeText={setCEP} style={styles.inputs} placeholder="CEP..." />
-                <TextInput value={rua} onChangeText={setRua} style={styles.inputs} placeholder="RUA..." />
-                <TextInput value={numero} onChangeText={setNumero} style={styles.inputs} placeholder="Número..." />
-                <TextInput value={bairro} onChangeText={setBairro} style={styles.inputs} placeholder="Bairro..." />
+                <TextInput value={zipcode} onChangeText={setZipcode} style={styles.inputs} placeholder="CEP..." />
+                <TextInput value={street} onChangeText={setStreet} style={styles.inputs} placeholder="RUA..." />
+                <TextInput value={number} onChangeText={setNumber} style={styles.inputs} placeholder="Número..." />
+                <TextInput value={neighborhood} onChangeText={setNeighborhood} style={styles.inputs} placeholder="Bairro..." />
                 <TextInput value={date} onChangeText={setDate} style={styles.inputs} maxLength={10} placeholder="Data..." />
-                <TextInput value={horario} onChangeText={setHorario} style={styles.inputs} maxLength={5} placeholder="Horario..." />
+                <TextInput value={schedule} onChangeText={setSchedule} style={styles.inputs} maxLength={5} placeholder="Horario..." />
                 <RectButton style={styles.button} onPress={handleRegisterNewEvent}>
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </RectButton>

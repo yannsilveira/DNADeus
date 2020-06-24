@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { KeyboardAvoidingView, Text, Platform, Image, StyleSheet, View, ScrollView, AsyncStorage, FlatList, TouchableOpacity } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import { AntDesign, Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import api from '../../services/api';
 
 const Home = () => {
     const navigation = useNavigation();
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        backgroundColor: '#000',
+        backgroundColor: 'red',
         height: 60,
         width: 150,
         flexDirection: 'row',

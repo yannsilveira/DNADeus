@@ -20,6 +20,8 @@ const NewMember = () => {
         whatsapp,
     };
 
+
+
     async function handleregisterNewMember() {
         try {
             await api.post(`/ministries/${await AsyncStorage.getItem('id')}/users`, data);
@@ -39,7 +41,7 @@ const NewMember = () => {
                 <TextInput style={styles.inputs} value={name} onChangeText={setName} placeholder="Informe seu Nome..." />
                 <TextInput style={styles.inputs} value={age} onChangeText={setAge} placeholder="Informe sua Idade..." />
                 <TextInput style={styles.inputs} value={email} onChangeText={setEmail} placeholder="Informe seu E-mail..." />
-                <TextInput style={styles.inputs} value={whatsapp} onChangeText={setWhatsApp} placeholder="Informe seu WhatsApp..." />
+                <TextInput style={styles.inputs} value={whatsapp} onChangeText={setWhatsApp} placeholder="Informe seu WhatsApp..." maxLength={9} />
                 <RectButton style={styles.button} onPress={handleregisterNewMember}>
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </RectButton>

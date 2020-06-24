@@ -12,7 +12,7 @@ const Logon = () => {
     async function handleNavigationToHome() {
         try {
             const response = await api.post('sessions', { id });
-            await AsyncStorage.setItem('id', JSON.stringify(id));
+            await AsyncStorage.setItem('id', id);
             await AsyncStorage.setItem('name', response.data.name);
             navigation.navigate('Home');
         } catch (error) {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        backgroundColor: '#000',
+        backgroundColor: 'red',
         height: 60,
         width: 300,
         flexDirection: 'row',
