@@ -5,6 +5,7 @@ module.exports = {
     async index(req, res) {
         const { id } = req.params
 
+
         const ministry = await Ministry.findByPk(id, {
             include: { association: 'events' }
         })

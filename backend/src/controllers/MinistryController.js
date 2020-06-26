@@ -11,12 +11,6 @@ module.exports = {
     },
 
     async index(req, res) {
-        const ministry = await Ministry.findAll()
-
-        return res.json(ministry)
-    },
-
-    async index(req, res) {
         const { id } = req.params
 
         const user = await User.findByPk(id, {

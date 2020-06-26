@@ -3,14 +3,9 @@ const UserController = require('./controllers/UserController')
 const EventController = require('./controllers/EventController')
 const MinistryController = require('./controllers/MinistryController')
 const SessionController = require('./controllers/SessionController')
-const GetsController = require('./controllers/GetsController')
-
 
 const routes = express.Router()
 
-//Rotas para pegar as informações memberamount e numberofevents da tabela ministries
-routes.get('/ministries/:id/memberamount', GetsController.showmemberamount)
-routes.get('/ministries/:id/numberofevents', GetsController.shownumberofevents)
 
 //Rota para Logon
 routes.post('/sessions', SessionController.create)
