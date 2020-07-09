@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../../assets/LOGO DNA-01.png';
 import { useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2, FiUserPlus, FiCalendar } from 'react-icons/fi';
 import '../Home/styles.css';
 import api from '../../services/api';
 
@@ -79,7 +79,7 @@ export default function Home() {
                     <h1>Home</h1>
                     <div className="table-description">
                         <h1 id="tablemembertitle" className="table-title">Membros</h1>
-                        <button className="btn btn-danger" type="button" onClick={handleNewMember}>Novo Membro</button>
+                        <button className="btn btn-danger" type="button" onClick={handleNewMember}><FiUserPlus size={20} color="#FFF" style={{ marginTop: 10 }} /><span>Novo Membro</span></button>
                     </div>
                     <table id="tablemember" className="table">
                         <thead className="thead-dark">
@@ -92,9 +92,9 @@ export default function Home() {
                             </tr>
                         </thead>
                         {users.map(user => (
-                            <tbody>
+                            <tbody key={user.id}>
                                 <tr>
-                                    <td key={user.id}>{user.name}</td>
+                                    <td>{user.name}</td>
                                     <td>{user.age}</td>
                                     <td>{user.email}</td>
                                     <td>{user.whatsapp}</td>
@@ -109,7 +109,7 @@ export default function Home() {
                     <br />
                     <div className="table-description">
                         <h1 id="tableeventtitle" className="table-title">Eventos</h1>
-                        <button className="btn btn-danger" type="button" onClick={handleNewEvent}>Novo Evento</button>
+                        <button className="btn btn-danger" type="button" onClick={handleNewEvent}><FiCalendar color="#FFF" size={20} style={{ marginTop: 10 }} /><span>Novo Evento</span></button>
                     </div>
                     <table id="tableevent" className="table">
                         <thead className="thead-dark">
@@ -125,9 +125,9 @@ export default function Home() {
                             </tr>
                         </thead>
                         {events.map(event => (
-                            <tbody>
+                            <tbody key={event.id}>
                                 <tr>
-                                    <td key={event.id}>{event.name}</td>
+                                    <td>{event.name}</td>
                                     <td>{event.description}</td>
                                     <td>{event.street}</td>
                                     <td>{event.number}</td>

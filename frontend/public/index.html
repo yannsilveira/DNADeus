@@ -10,14 +10,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script>
-    $(document).ready(function () {      
-      var rowmembernumb = $('#tablemember tr').length
-      var roweventnumb = $('#tableevent tr').length 
-      $('#tableeventtitle').append(`<span>: ${roweventnumb}</span>`)
-      $('#tablemembertitle').append(`<span>: ${rowmembernumb}</span>`)
-    })
-  </script>
-  <script>
     // Função para formatar 1 em 01
     const zeroFill = (n) => {
       return ('0' + n).slice(-2);
