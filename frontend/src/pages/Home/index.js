@@ -91,9 +91,9 @@ export default function Home() {
                                 <th scope="col">Deletar</th>
                             </tr>
                         </thead>
-                        {users.map(user => (
-                            <tbody key={user.id}>
-                                <tr>
+                        <tbody>
+                            {users.map(user => (
+                                <tr key={user.id}>
                                     <td>{user.name}</td>
                                     <td>{user.age}</td>
                                     <td>{user.email}</td>
@@ -102,8 +102,8 @@ export default function Home() {
                                         <FiTrash2 size={20} color="#000" />
                                     </button>
                                 </tr>
-                            </tbody>
-                        ))}
+                            ))}
+                        </tbody>
                     </table>
                     <br />
                     <br />
@@ -124,9 +124,9 @@ export default function Home() {
                                 <th scope="col">Deletar</th>
                             </tr>
                         </thead>
-                        {events.map(event => (
-                            <tbody key={event.id}>
-                                <tr>
+                        <tbody>
+                            {events.map(event => (
+                                <tr key={event.id}>
                                     <td>{event.name}</td>
                                     <td>{event.description}</td>
                                     <td>{event.street}</td>
@@ -138,8 +138,8 @@ export default function Home() {
                                         <FiTrash2 size={20} color="#000" />
                                     </button>
                                 </tr>
-                            </tbody>
-                        ))}
+                            ))}
+                        </tbody>
                     </table>
                 </section>
             </div>
